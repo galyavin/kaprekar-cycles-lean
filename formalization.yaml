@@ -1,0 +1,202 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Even bases with exactly one four-digit Kaprekar cycle"
+  description: >-
+    The four-digit Kaprekar map in base B sends an integer 0 <= x < B^4, written with
+    four base-B digits (leading zeros allowed), to the descending arrangement of its
+    digits minus the ascending arrangement. A cycle is a periodic orbit through an input
+    whose digits are not all equal. Cycles are counted up to cyclic shift, including fixed
+    points of least period one. This formalization uses only Lean 4 core and Std and proves that an even base B >= 2 has exactly one cycle if and only if
+    B = 3*2^(2k+1) or B = 5*2^(2k+1) for some k >= 0, or B = 7*2^n with n >= 1 and n not
+    divisible by 3. In these three families the unique cycle has length 6(k+1), 1 and 3,
+    respectively; base ten is 5*2^1, with the fixed point 6174. This is Corollary 2 of
+    R. Galyavin, "Cycles of the four-digit Kaprekar map in even bases" (2026). It proves
+    the pattern that Chen, Ono, Schwartz and Thakur recorded from numerical evidence
+    (J. Integer Seq. 29 (2026), Remark 28). The map is stated directly as digit sorting
+    and subtraction on natural numbers. The underlying Lean development also proves the
+    paper's Theorem 1, the classification of all cycles in every even base m*2^n; that
+    classification is not part of the statement compared here.
+  authors:
+    - "Rustem Galyavin"
+  responsible_maintainers:
+    - "Rustem Galyavin"
+  license: "MIT"
+  contact:
+    name: "Rustem Galyavin"
+    email: "rustem@galyavin.com"
+    orcid: "0009-0006-6875-9170"
+
+sources:
+  - title: "Cycles of the four-digit Kaprekar map in even bases"
+    authors:
+      - "Rustem Galyavin"
+    id: "doi:10.5281/zenodo.24358739"
+    type: "paper"
+    location: "Corollary 2 (the unique-cycle bases and the lengths of their cycles); Theorem 1 is proved by the development but not compared here"
+    relationship: "formalizes"
+    note: >-
+      The formalization's author is the paper's author. The paper's ancillary material,
+      including the original Lean development on Lean 4.28.0, is archived at
+      doi:10.5281/zenodo.24325110 and maintained at https://github.com/galyavin/kaprekar-dynamics
+      (folder cycles-even-bases/ancillary/lean).
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Four-digit Kaprekar dynamics in odd bases"
+    authors:
+      - "E. Chen"
+      - "K. Ono"
+      - "R. E. Schwartz"
+      - "D. Thakur"
+    id: "J. Integer Seq. 29 (2026), Article 26.4.7; arXiv:2606.20439"
+    type: "paper"
+    location: "Remark 28 (the unique-cycle pattern in even bases, recorded from numerical evidence); Theorem 1 (cycles in odd bases)"
+    relationship: "background"
+    note: >-
+      Records, as numerical evidence, the even bases with exactly one cycle. The paper
+      formalized here proves that pattern. Its odd-base Theorem 1 is used in the paper's
+      informal proof of Corollary 2; the Lean development proves what it needs about odd
+      cores directly.
+    author_endorsement: "not-contacted"
+  - title: "The determination of all four-digit Kaprekar constants"
+    authors:
+      - "H. Hasse"
+      - "G. D. Prichett"
+    id: "J. Reine Angew. Math. 299/300 (1978), 113-124"
+    type: "paper"
+    location: "Theorem 4.1 (all cycles in the bases 5*2^n)"
+    relationship: "background"
+    note: "Earlier classification for the odd part 5, which contains the base-ten case."
+    author_endorsement: "not-contacted"
+  - title: "Wall deflections in four-digit Kaprekar dynamics: folded doubling and the even-base 3*2^k towers"
+    authors:
+      - "M. Kahramanlar"
+    id: "doi:10.5281/zenodo.21472450"
+    type: "paper"
+    location: "Section 5 (cycles in the bases 3*2^k)"
+    relationship: "background"
+    note: "Earlier classification for the odd part 3; the first family of the corollary also follows from it."
+    author_endorsement: "not-contacted"
+  - title: "Base scaling in four-digit Kaprekar dynamics, and an infinite family of bases with no unique terminating cycle"
+    authors:
+      - "Korea Superintelligence Labs"
+    id: "https://lean.up.railway.app/papers/kaprekar-v1.pdf (public draft, version 1, accessed 17 November 2026)"
+    type: "paper"
+    location: "Theorem 3.2, Theorem 7.1, Remark 7.2, Sections 9 and 10"
+    relationship: "background"
+    note: >-
+      Proves the unique-cycle pattern for even bases up to 200 and reports a computational
+      check up to 6200; leaves the general exponent conditions open (Section 9), which the
+      formalized corollary settles.
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "https://github.com/galyavin/kaprekar-dynamics (cycles-even-bases/ancillary/lean)"
+    relationship: "builds-on"
+    note: >-
+      The substantive Lean development of the paper (Theorem 1 and Corollary 2 for the
+      development's step map on four-slot digit words), by the same author. The Solution
+      imports a port of that development included in this repository and relates its step map
+      to the Challenge definition. The port uses Lean's module system and Lean 4.35.0-rc2.
+  - id: "https://lean.up.railway.app/papers/kaprekar-v1.pdf"
+    relationship: "independent"
+    note: >-
+      The Korea Superintelligence Labs draft reports formal cycle checks for even bases up to
+      200. They are neither used nor ported here.
+
+classification:
+  arxiv: ["math.NT", "math.DS"]
+  msc2020: ["11A63", "37P99"]
+
+status:
+  scope: >-
+    Compared statement: Corollary 2 of the paper (which even bases have exactly one cycle,
+    and the length of that cycle), for the Kaprekar map defined by digit sorting and
+    subtraction on natural numbers below B^4. Proved in the development but not compared
+    here: Theorem 1 (all cycles in every even base). Outside the development: the paper's
+    other results and the fixed-point basin limits.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "PalomarKaprekar.unique_cycle_iff"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "PalomarKaprekar.unique_cycle_length"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        Codex agents, assigned bounded tasks by the author's research lead, carried out
+        research, computations, drafting and the original Lean development. A Codex agent
+        ported the development and completed the Solution proof against every_even_base.
+      prompting_notes: >-
+        The port and completion of the Solution used GPT-6.2 Sol at Xhigh reasoning effort.
+        The earlier task model identifiers were not reconstructed.
+    - method: "agent"
+      framework: "Claude Code (Anthropic Claude)"
+      tool_setup: >-
+        Claude acted as research lead (task design, review and drafting) and prepared the
+        initial Challenge, Solution bridge and Palomar metadata drafts.
+      prompting_notes: >-
+        Model identifiers per task were not reconstructed for this file.
+    - method: "manual"
+      tool_setup: >-
+        The author directed and supervised all of the above, chose the results to pursue and
+        publish, and takes responsibility for the contents.
+  notes: >-
+    The research, computations, drafting and Lean development were carried out with
+    substantial assistance from AI systems (OpenAI Codex and Anthropic Claude), under the
+    author's direction and close supervision. The author takes responsibility for the
+    contents. No person other than the author has reviewed the formalization.
+
+fidelity:
+  divergences: >-
+    The paper defines the map on integers 0 <= x < B^4. The Challenge does the same, with the
+    descending arrangement given by insertion sort and Nat subtraction (which never truncates
+    here). The development works instead with four-slot integer digit words and a sorting
+    network; Solution.lean proves the two maps conjugate. "Exactly one cycle" is stated as: a
+    periodic input with non-constant digits whose orbit contains every periodic input with
+    non-constant digits; the cycle length is that input's least period. The compared statement is quantified over
+    the even base B itself. The proof transports the uniqueness and least-period fields of
+    every_even_base to the sorting-and-subtraction map.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "AI referee reviews of the paper (OpenAI and Anthropic models), commissioned by the author"
+  notes: >-
+    The Lean proofs are checked by the Lean kernel. The paper and its claims were reviewed by
+    AI referee agents before release. No independent human expert has reviewed the paper or
+    the formalization.
+
+alignment:
+  namespace: "PalomarKaprekar"
+  statements:
+    - source: "Corollary 2 (bases with exactly one cycle)"
+      lean: "PalomarKaprekar.unique_cycle_iff"
+      module: "Challenge"
+      status: "proved"
+    - source: "Corollary 2 (lengths 6(k+1), 1, 3)"
+      lean: "PalomarKaprekar.unique_cycle_length"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 1 (all cycles in every even base)"
+      lean: "KaprekarBoundary.theoremC, KaprekarBoundary.every_even_base"
+      module: "TheoremC"
+      status: "proved in the development; not compared in this submission"
+
+acknowledgements: >-
+  Lean 4 core library; Palomar's Comparator configuration format; the formalization.yaml
+  standard of the mathlib initiative.

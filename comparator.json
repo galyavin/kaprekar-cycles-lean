@@ -1,0 +1,9 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PalomarKaprekar.unique_cycle_iff",
+    "PalomarKaprekar.unique_cycle_length"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}
