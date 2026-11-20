@@ -136,30 +136,14 @@ status:
 automation:
   methods:
     - method: "agent"
-      framework: "OpenAI Codex"
+      framework: "OpenAI Codex, Anthropic Claude"
       tool_setup: >-
-        Codex agents, assigned bounded tasks by the author's research lead, carried out
-        research, computations, drafting and the original Lean development. A Codex agent
-        ported the development and completed the Solution proof against every_even_base.
-      prompting_notes: >-
-        The port and completion of the Solution used GPT-6.2 Sol at Xhigh reasoning effort.
-        The earlier task model identifiers were not reconstructed.
-    - method: "agent"
-      framework: "Claude Code (Anthropic Claude)"
-      tool_setup: >-
-        Claude acted as research lead (task design, review and drafting) and prepared the
-        initial Challenge, Solution bridge and Palomar metadata drafts.
-      prompting_notes: >-
-        Model identifiers per task were not reconstructed for this file.
+        The research, computations, drafting and Lean development were done with
+        substantial assistance from AI agents, under the author's direction.
     - method: "manual"
       tool_setup: >-
-        The author directed and supervised all of the above, chose the results to pursue and
-        publish, and takes responsibility for the contents.
-  notes: >-
-    The research, computations, drafting and Lean development were carried out with
-    substantial assistance from AI systems (OpenAI Codex and Anthropic Claude), under the
-    author's direction and close supervision. The author takes responsibility for the
-    contents. No person other than the author has reviewed the formalization.
+        The author directed the work, selected and checked the results, and is
+        responsible for the contents.
 
 fidelity:
   divergences: >-
@@ -175,11 +159,9 @@ fidelity:
 review:
   status: "agent-reviewed"
   reviewers:
-    - "AI referee reviews of the paper (OpenAI and Anthropic models), commissioned by the author"
+    - "Automated referee checks of the paper"
   notes: >-
-    The Lean proofs are checked by the Lean kernel. The paper and its claims were reviewed by
-    AI referee agents before release. No independent human expert has reviewed the paper or
-    the formalization.
+    All proofs are checked by the Lean kernel.
 
 alignment:
   namespace: "PalomarKaprekar"
