@@ -1,6 +1,6 @@
 name = "kaprekar_boundary"
 version = "0.1.0"
-defaultTargets = ["TheoremC", "Solution"]
+defaultTargets = ["TheoremC", "Solution", "SolutionTheorem1"]
 
 [[lean_lib]]
 name = "Boundary"
@@ -49,3 +49,9 @@ name = "Challenge"
 
 [[lean_lib]]
 name = "Solution"
+
+[[lean_lib]]
+name = "ChallengeTheorem1"
+
+[[lean_lib]]
+name = "SolutionTheorem1"

@@ -1,0 +1,11 @@
+{
+  "challenge_module": "ChallengeTheorem1",
+  "solution_module": "SolutionTheorem1",
+  "theorem_names": [
+    "PalomarKaprekar.cycles_odd_core",
+    "PalomarKaprekar.cycles_core_three",
+    "PalomarKaprekar.cycles_base_two",
+    "PalomarKaprekar.cycles_higher_powers_two"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

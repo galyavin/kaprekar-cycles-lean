@@ -1,0 +1,212 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Cycles of the four-digit Kaprekar map in even bases"
+  description: >-
+    The four-digit Kaprekar map in base B sends an integer 0 <= x < B^4, written with
+    four base-B digits (leading zeros allowed), to the descending arrangement of its
+    digits minus the ascending arrangement. A cycle is a periodic orbit through an input
+    whose digits are not all equal. Cycles are counted up to cyclic shift, including fixed
+    points of least period one. This formalization uses only Lean 4 core and Std and
+    proves Theorem 1 of R. Galyavin, "Cycles of the four-digit Kaprekar map in even bases"
+    (2026). For B = m*2^n with m odd, n >= 1 and m >= 5, each cycle of the folded map
+    on odd difference pairs lifts to a cycle of the same length. There is one additional
+    cycle of length n+1 if 2^n is 1 modulo m, or one of length 2(n+1) if m = 5 and n is
+    2 modulo 4. The two conditions are mutually exclusive and the list is exhaustive.
+    For m = 3, odd n gives one cycle of length 3(n+1), and even n gives two cycles
+    of lengths n+1 and 2(n+1). Base two has two fixed points. In base 2^n for odd n >= 3
+    there are (n-1)/2 cycles of each length n and n+2. For even n >= 2 there are
+    (n-2)/2 cycles of each of those lengths, one of length n/2 and one of length n/2+1.
+    The map is stated directly as digit sorting and subtraction on natural numbers.
+  authors:
+    - "Rustem Galyavin"
+  responsible_maintainers:
+    - "Rustem Galyavin"
+  license: "MIT"
+  contact:
+    name: "Rustem Galyavin"
+    email: "rustem@galyavin.com"
+    orcid: "0009-0006-6875-9170"
+
+sources:
+  - title: "Cycles of the four-digit Kaprekar map in even bases"
+    authors:
+      - "Rustem Galyavin"
+    id: "doi:10.5281/zenodo.24358739"
+    type: "paper"
+    location: "Theorem 1(a)–(c) and the table of cycle counts and periods in bases 2^n"
+    relationship: "formalizes"
+    note: >-
+      The formalization's author is the paper's author. The paper's ancillary material,
+      including the original Lean development on Lean 4.28.0, is archived at
+      doi:10.5281/zenodo.24325110 and maintained at https://github.com/galyavin/kaprekar-dynamics
+      (folder cycles-even-bases/ancillary/lean).
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Four-digit Kaprekar dynamics in odd bases"
+    authors:
+      - "E. Chen"
+      - "K. Ono"
+      - "R. E. Schwartz"
+      - "D. Thakur"
+    id: "J. Integer Seq. 29 (2026), Article 26.4.7; arXiv:2606.20439"
+    type: "paper"
+    location: "Remark 28 (the unique-cycle pattern in even bases, recorded from numerical evidence); Theorem 1 (cycles in odd bases)"
+    relationship: "background"
+    note: >-
+      Records, as numerical evidence, the even bases with exactly one cycle. The paper
+      formalized here proves that pattern in Corollary 2. Chen, Ono, Schwartz and
+      Thakur's Theorem 1 describes the odd-base cycles through folded differences. The
+      Lean development proves what it needs about odd cores directly.
+    author_endorsement: "not-contacted"
+  - title: "The determination of all four-digit Kaprekar constants"
+    authors:
+      - "H. Hasse"
+      - "G. D. Prichett"
+    id: "J. Reine Angew. Math. 299/300 (1978), 113-124"
+    type: "paper"
+    location: "Theorem 4.1 (all cycles in the bases 5*2^n)"
+    relationship: "background"
+    note: "Earlier classification for the odd part 5, which contains the base-ten case."
+    author_endorsement: "not-contacted"
+  - title: "Wall deflections in four-digit Kaprekar dynamics: folded doubling and the even-base 3*2^k towers"
+    authors:
+      - "M. Kahramanlar"
+    id: "doi:10.5281/zenodo.21472450"
+    type: "paper"
+    location: "Section 5 (cycles in the bases 3*2^k)"
+    relationship: "background"
+    note: "Earlier classification for the odd part 3."
+    author_endorsement: "not-contacted"
+  - title: "Base scaling in four-digit Kaprekar dynamics, and an infinite family of bases with no unique terminating cycle"
+    authors:
+      - "Korea Superintelligence Labs"
+    id: "https://lean.up.railway.app/papers/kaprekar-v1.pdf (public draft, version 1, accessed 17 November 2026)"
+    type: "paper"
+    location: "Theorem 3.2, Theorem 7.1, Remark 7.2, Sections 9 and 10"
+    relationship: "background"
+    note: >-
+      Proves the unique-cycle pattern for even bases up to 200 and reports a computational
+      check up to 6200. Section 9 leaves the general conditions open.
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "PALOMAR-2026-11-21-000001"
+    relationship: "builds-on"
+    note: >-
+      PALOMAR-2026-11-21-000001 compares only Corollary 2. It identifies the even bases
+      with exactly one cycle and gives that cycle's length. Theorem 1 classifies every
+      nonconstant cycle in every even base. It identifies all lifts from odd cores with
+      their original periods, classifies the additional cycles and their exact periods,
+      and counts the cycles of each length in every power of two. This includes bases
+      with more than one cycle, for example base 4 with one fixed point and a 2-cycle.
+      Both entries use the same development. Theorem 1 was already proved there and
+      this entry presents its first direct comparison for the digit-sorting map.
+  - id: "https://github.com/galyavin/kaprekar-dynamics (cycles-even-bases/ancillary/lean)"
+    relationship: "builds-on"
+    note: >-
+      The substantive Lean development of the paper (Theorem 1 and Corollary 2 for the
+      development's step map on four-slot digit words), by the same author. SolutionTheorem1 imports a port of that development included in this repository
+      and reuses the original Solution's proof relating its step map to the Challenge
+      definition. The port uses Lean's module system and Lean 4.35.0-rc2.
+  - id: "https://lean.up.railway.app/papers/kaprekar-v1.pdf"
+    relationship: "independent"
+    note: >-
+      The Korea Superintelligence Labs draft reports formal cycle checks for even bases up to
+      200. They are neither used nor ported here.
+
+classification:
+  arxiv: ["math.NT", "math.DS"]
+  msc2020: ["11A63", "37P99"]
+
+status:
+  scope: >-
+    Compared statement: Theorem 1 of the paper, including the odd-core lifts with
+    preservation of periods, the two optional boundary cases, odd part three, and
+    every row of the powers-of-two table. Corollary 2 is proved in the same development
+    and compared separately in PALOMAR-2026-11-21-000001. The paper's fixed-point basin
+    limits are outside this formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "PalomarKaprekar.cycles_odd_core"
+      file: "SolutionTheorem1.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator-theorem1.json"
+      literature_dependencies: []
+    - declaration: "PalomarKaprekar.cycles_core_three"
+      file: "SolutionTheorem1.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator-theorem1.json"
+      literature_dependencies: []
+    - declaration: "PalomarKaprekar.cycles_base_two"
+      file: "SolutionTheorem1.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator-theorem1.json"
+      literature_dependencies: []
+    - declaration: "PalomarKaprekar.cycles_higher_powers_two"
+      file: "SolutionTheorem1.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator-theorem1.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      framework: "OpenAI Codex, Anthropic Claude"
+      tool_setup: >-
+        The research, computations, drafting and Lean development were done with
+        substantial assistance from AI agents, under the author's direction.
+    - method: "manual"
+      tool_setup: >-
+        The author directed the work, selected and checked the results, and is
+        responsible for the contents.
+
+fidelity:
+  divergences: >-
+    The paper defines the map on integers 0 <= x < B^4. The Challenge does the same, with the
+    descending arrangement given by insertion sort and Nat subtraction (which never truncates
+    here). The development works instead with four-slot integer digit words and a sorting
+    network. SolutionTheorem1 reuses Solution.lean's proof that the two maps are conjugate.
+    Forward orbit membership of a periodic representative specifies the cycle. A return-time
+    equivalence identifies each lift's least period with that of its odd-core cycle.
+    Disjoint, indexed representatives give the exact counts in the powers-of-two table.
+    The compared declarations split Theorem 1 into its three cases, with base two and
+    higher powers compared separately.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Automated referee checks of the paper"
+  notes: >-
+    All proofs are checked by the Lean kernel.
+
+alignment:
+  namespace: "PalomarKaprekar"
+  statements:
+    - source: "Theorem 1(a) (odd part at least five)"
+      lean: "PalomarKaprekar.cycles_odd_core"
+      module: "ChallengeTheorem1"
+      status: "proved"
+    - source: "Theorem 1(b) (odd part three)"
+      lean: "PalomarKaprekar.cycles_core_three"
+      module: "ChallengeTheorem1"
+      status: "proved"
+    - source: "Theorem 1(c), powers-of-two table (base two)"
+      lean: "PalomarKaprekar.cycles_base_two"
+      module: "ChallengeTheorem1"
+      status: "proved"
+    - source: "Theorem 1(c), powers-of-two table (n at least two)"
+      lean: "PalomarKaprekar.cycles_higher_powers_two"
+      module: "ChallengeTheorem1"
+      status: "proved"
+
+acknowledgements: >-
+  Lean 4 core library; Palomar's Comparator configuration format; the formalization.yaml
+  standard of the mathlib initiative.
